@@ -1,0 +1,21 @@
+ 
+  .card {
+    height: 100px;
+  }
+  
+  .card > img {
+    height: 100%;
+    padding-right: 10px;
+    float: left;
+  }
+  
+  .card > div {
+    padding-left: 10px;
+    vertical-align: top;
+    line-height: 65px;
+    font-size: 18px;
+    font-weight: 450;
+  }
+  
+ 
+  

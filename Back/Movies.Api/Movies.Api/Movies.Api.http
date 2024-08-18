@@ -1,0 +1,6 @@
+@Movies.Api_HostAddress = http://localhost:5184
+
+GET {{Movies.Api_HostAddress}}/controllers/movies/
+Accept: application/json
+
+###
