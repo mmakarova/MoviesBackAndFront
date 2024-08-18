@@ -32,7 +32,7 @@ namespace Movies.Application.Repositories {
             var result = await connection.QueryAsync(
               new CommandDefinition("""
                   select id,title,yearofrelease,posterurl from movies 
-                  where (@title is null or title like ('%' || @title || '%')) and (@yearofrelease is null or yearofrelease =@yearofrelease)
+                  where (@title is null or title ilike ('%' || @title || '%'))
                   limit @pageSize
                   offset @pageOffset
                   """, new {
@@ -54,7 +54,7 @@ namespace Movies.Application.Repositories {
             using var connection = await _dbConnectionFactory.CreateConnectionAsync();
             return await connection.QuerySingleAsync<int>(new CommandDefinition("""
                 select count(id) from movies
-                where (@title is null or title like ('%' || @title || '%'))
+                where (@title is null or title ilike ('%' || @title || '%'))
                 and (@yearOfRelease is null or yearofrelease = @yearOfRelease)
                 """, new { title = title, yearOfRelease = yearOfRelease }));
         }

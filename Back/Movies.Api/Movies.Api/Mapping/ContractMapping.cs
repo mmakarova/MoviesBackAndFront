@@ -28,10 +28,8 @@ namespace Movies.Api.Mapping {
 
             return new GetAllMoviesOptions {
                 Title = request.Title,
-                YearOfRelease = request.Year,
                 Page = request.Page,
                 PageSize  = request.PageSize,
-                PosterUrl = request.PosterUrl
             };
         }
 

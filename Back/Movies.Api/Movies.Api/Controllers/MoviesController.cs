@@ -20,7 +20,7 @@ namespace Movies.Api.Controllers {
         }
 
 
-        [HttpGet($"/api/movies/{{id:guid}}")]
+        [HttpGet($"/api/movies/{{id:int}}")]
         public async Task<IActionResult> Get([FromRoute] int id) {
             var movie = await _movieRepository.GetByIdAsync(id);
             if (movie == null) {

@@ -8,7 +8,7 @@ namespace Movies.Application.Models {
     public class GetAllMoviesOptions {
         public required string? Title { get; init; }
       
-        public required string? PosterUrl { get; init; }
+        public string? PosterUrl { get; init; }
         public int? YearOfRelease { get; init; }
 
         public int Page { get; set; }
