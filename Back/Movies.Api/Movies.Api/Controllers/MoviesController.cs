@@ -20,7 +20,9 @@ namespace Movies.Api.Controllers {
         }
 
 
-        [HttpGet($"/api/movies/{{id:guid}}")]
+        [HttpGet($"/api/movies/{{id:int}}")]
+        [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get([FromRoute] int id) {
             var movie = await _movieRepository.GetByIdAsync(id);
             if (movie == null) {
@@ -30,13 +32,14 @@ namespace Movies.Api.Controllers {
         }
 
         [HttpGet($"/api/movies")]
+        [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]        
         public async Task<IActionResult> GetAll([FromQuery] GetAllMoviesRequest request) {
             var options = request.MapTopOptions();
             var movies = await _movieRepository.GetAllAsync(options);            
             if (movies == null) {
                 return NotFound();
             }
-            var movieCount = await _movieRepository.GetCountAsync(options.Title, options.YearOfRelease);
+            var movieCount = await _movieRepository.GetCountAsync(options.Title, options.YearOfRelease, options.GenreId);
             var moviesResponse = movies.MapToResponse(request.Page,request.PageSize, movieCount);
             return Ok(moviesResponse);
         }

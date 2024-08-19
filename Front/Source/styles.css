@@ -12,9 +12,18 @@
   .card > div {
     padding-left: 10px;
     vertical-align: top;
-    line-height: 65px;
+    line-height: 45px;
     font-size: 18px;
     font-weight: 450;
+  }
+
+  .tag {
+    border-radius: 5px;
+    line-height: 30px;
+    background-color:rgb(255, 114, 0) ;
+    color: #fff;
+    margin-right: 5px;
+    padding: 3px;
   }
   
  

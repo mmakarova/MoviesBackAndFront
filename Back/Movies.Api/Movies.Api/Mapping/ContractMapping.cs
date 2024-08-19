@@ -4,14 +4,15 @@ using Movies.Contracts.Requests;
 using Movies.Contracts.Responses;
 
 namespace Movies.Api.Mapping {
-    public static class ContractMappingMovies {
+    public static class ContractMapping {
 
         public static MovieResponse MapToResponse(this Movie movie) {
             return new MovieResponse {
                 Id = movie.Id,
                 Title = movie.Title,
                 YearOfRelease = movie.YearOfRelease,
-                PosterUrl = movie.PosterUrl
+                PosterUrl = movie.PosterUrl,
+                Genres = movie.Genres
             };
         }
 
@@ -24,14 +25,25 @@ namespace Movies.Api.Mapping {
             };
         }
 
-        public static GetAllMoviesOptions MapTopOptions(this GetAllMoviesRequest request) {
+        public static GenreResponse MapToResponse(this Genre genre) {
+            return new GenreResponse {
+                Id = genre.Id,
+                Title = genre.Title
+            };
+        }
 
+        public static GenresResponse MapToResponse(this IEnumerable<Genre> genres) {
+            return new GenresResponse {
+                Items = genres.Select(MapToResponse)
+            };
+        }
+
+        public static GetAllMoviesOptions MapTopOptions(this GetAllMoviesRequest request) {
             return new GetAllMoviesOptions {
-                Title = request.Title,
-                YearOfRelease = request.Year,
+                Title = request.Title,                
                 Page = request.Page,
-                PageSize  = request.PageSize,
-                PosterUrl = request.PosterUrl
+                GenreId = request.GenreId,
+                PageSize  = request.PageSize                
             };
         }
 

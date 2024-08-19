@@ -1,13 +1,18 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Movies.Contracts.Requests {
     public class GetAllMoviesRequest : PagedRequest {
+        
         public required string? Title { get; init; }
-        public required string? PosterUrl { get; init; }
-        public required int? Year { get; init; }
+        private string? PosterUrl { get; init; }
+        private int? Year { get; init; }
+        
+        public required int? GenreId { get; init; }
     }
 }

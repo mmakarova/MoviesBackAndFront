@@ -10,7 +10,7 @@ namespace Movies.Application.Repositories {
         Task<Movie?> GetByIdAsync(int id);
         Task<IEnumerable<Movie>> GetAllAsync(GetAllMoviesOptions options);
 
-        Task<int> GetCountAsync(string? title, int? yearOfRelease);
+        Task<int> GetCountAsync(string? title, int? yearOfRelease, int? genreid);
 
     }
 }

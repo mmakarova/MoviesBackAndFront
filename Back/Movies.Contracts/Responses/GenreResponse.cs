@@ -5,12 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Movies.Contracts.Responses {
-    public class MovieResponse {
+    public class GenreResponse {
         public required int Id { get; init; }
         public required string Title { get; init; }
-        public required string PosterUrl { get; init; }
-        public required int YearOfRelease { get; init; }
-
-        public required List<int> Genres { get; init; }
     }
 }
