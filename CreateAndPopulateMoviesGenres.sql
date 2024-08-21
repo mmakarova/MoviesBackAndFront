@@ -4,6 +4,30 @@ title TEXT not null,
 posterurl TEXT not null,
 yearofrelease integer not null);
 
+create table if not exists genres (
+id serial primary key,
+title TEXT not null);
+
+create table if not exists movies_genres (
+movie_id integer not null,
+genre_id integer not null,
+primary key(movie_id, genre_id)
+);
+
+INSERT INTO genres (title) VALUES 
+('Фэнтези'),
+('Приключения'),
+('Боевик'),
+('Фантастика'),
+('Драма');
+
+--select * from genres
+--1	Фэнтези
+--2	Приключения
+--3	Боевик
+--4	Фантастика
+--5	Драма
+
 INSERT INTO movies (title,yearofrelease,posterurl) VALUES 
 ('Меч короля Артура',2017,'https://upload.wikimedia.org/wikipedia/ru/thumb/c/c6/King_Arthur_Legend_of_the_Sword.jpg/202px-King_Arthur_Legend_of_the_Sword.jpg'),
 ('Бэтмен: Начало',2005,'https://upload.wikimedia.org/wikipedia/ru/thumb/d/d2/Batman_Begins_%28poster%29.jpg/245px-Batman_Begins_%28poster%29.jpg'),
@@ -20,29 +44,6 @@ INSERT INTO movies (title,yearofrelease,posterurl) VALUES
 --5	Крестный отец
 --6	Лабиринт фавна
 
-create table if not exists genres (
-id serial primary key,
-title TEXT not null);
-
-INSERT INTO genres (title) VALUES 
-('Фэнтези'),
-('Приключения'),
-('Боевик'),
-('Фантастика'),
-('Драма');
-
---select * from genres
---1	Фэнтези
---2	Приключения
---3	Боевик
---4	Фантастика
---5	Драма
-
-create table if not exists movies_genres (
-movie_id integer not null,
-genre_id integer not null,
-primary key(movie_id, genre_id)
-);
 
 INSERT INTO movies_genres (movie_id, genre_id) VALUES 
 (1, 1),
