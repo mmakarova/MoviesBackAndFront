@@ -21,6 +21,8 @@
 ## Погружение системного аналитика в новый проект
 Часто системному аналитику при погружение в новый проект необходимо разбираться в текущей системе, которая плохо документирована или не документирована вовсе. В рамках вебинара мы рассмотрим с чего можно начать и вариант написания требований. 
 
+[Вернуться к содержанию](#thetableofcontents)
+
 ## Получение бизнес требований от заказчика
 В рамках вебинара рассмотрим в качестве системы для доработок витрину кинофильмов, в которой уже разработа фильтрация по названию и навигирование по страницам. 
 
@@ -30,6 +32,8 @@
 
 Также мы получили макет от дизайнера на улучшенную витрину фильмов:
 ![Макет](Images/Design.png)
+
+[Вернуться к содержанию](#thetableofcontents)
 
 ## Получение информации от команды и бизнеса
 
@@ -46,6 +50,7 @@
 5. Какие тестовые среды есть?
 6. Нужна ли данамическая прогрузка жанров?
 
+[Вернуться к содержанию](#thetableofcontents)
 
 ## Анализ текущей информационной системы AS IS
 
@@ -54,11 +59,15 @@
 3. Запросы к системе с помощью Swagger/Postman.
 4. Анализ отличий макетов.
 
+[Вернуться к содержанию](#thetableofcontents)
+
 ## Выявление use cases
 1. Пользователь может фильтровать фильмы по наименованию фильма и/или жанру.
 2. Пользователь может сбрасывать фильтр.
 3. Пользователь может переключаться между страницами фильмов.
 4. Пользователь может выбрать жанр по его наименованию.
+
+[Вернуться к содержанию](#thetableofcontents)
 
 ## Системные требования к БД
 ![Сущности](Images/Entities.png)
@@ -84,6 +93,7 @@ primary key(movie_id, genre_id)
 ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_genres_fk FOREIGN KEY (genre_id) REFERENCES public.genres(id);
 ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN KEY (movie_id) REFERENCES public.movies(id);
 ```
+[Вернуться к содержанию](#thetableofcontents)
 
 ## Требования к Backend
 1. Реализовать endpoint **GET /genres** для получения id и наименования жанра. 
@@ -114,6 +124,9 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
     ]
 }
 ```
+
+[Вернуться к содержанию](#thetableofcontents)
+
 2. Добавить параметр запроса genreid в запрос **GET /movies** для фильтрации фильмов в том числе по выбранному жанру.
 Пример, запроса **api/movies?pagesize=4&page=1&genreid=1**
 
@@ -167,7 +180,7 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
     "total": 3
 }
 ```
-
+[Вернуться к содержанию](#thetableofcontents)
 
 ## Техническая реализация Backend части
 
@@ -184,4 +197,6 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
 ## Ветки репозитория
 1. **master** - в этой ветке находится оригинальный проект с которого системный аналитик начинает работу.
 2. **movies-with-genres** - в этой ветке находится доработанный по требованиям проект.
+
+[Вернуться к содержанию](#thetableofcontents)
 
