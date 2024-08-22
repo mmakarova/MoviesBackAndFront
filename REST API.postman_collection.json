@@ -55,36 +55,6 @@
 			"name": "Genres",
 			"item": [
 				{
-					"name": "Создать жанр",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n   \"Title\": \"Комедии\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/genres",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"genres"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Получить все жанры",
 					"request": {
 						"auth": {
@@ -100,6 +70,28 @@
 							"path": [
 								"api",
 								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить жанр",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/movies/78032413-6a58-4235-b9ab-946a663a1e70",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"movies",
+								"78032413-6a58-4235-b9ab-946a663a1e70"
 							]
 						}
 					},
