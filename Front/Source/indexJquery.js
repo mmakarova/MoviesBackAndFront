@@ -1,29 +1,25 @@
 $(function () {
     const baseUrl = "http://localhost:5184/";
-    const getAllMovies = baseUrl + "api/movies";
-    const getAllGenres = baseUrl + "api/genres";
+    const getAllMoviesUrl = baseUrl + "api/movies";
+    const getAllGenresUrl = baseUrl + "api/genres";
     const pageSize = 4;
     let genres =[];
 
-    GetGenres();
-
+    //Редактор наименования фильма
     const filterTitle = $('#filterTitle').dxTextBox({
         placeholder: 'Введите название фильма',
         showClearButton: true
     }).dxTextBox('instance');
+
+    //Редактор наименования жанра
     const filterGenre = $('#filterGenre').dxSelectBox({        
         valueExpr: "id",
         displayExpr: "title",
         placeholder: 'Выберите жанр',
         showClearButton: true  
     }).dxSelectBox('instance');
-    $('#searchButton').dxButton({
-        text: 'Поиск',
-        onClick() {
-            CreateQueryAndFetchData();
-        }
-    });
 
+    //Редактор списка фильмов
     const list = $("#listMovies").dxList({
         itemTemplate: function (data) {
             const result = $('<div>').addClass('card');
@@ -39,7 +35,17 @@ $(function () {
             return result;
         }
     }).dxList('instance');
+    
+    //Кнопка поиска
+    $('#searchButton').dxButton({
+        text: 'Поиск',
+        onClick() {
+            CreateQueryAndFetchData();
+        }
+    });
 
+
+    //Пейджер страниц
     const pagerSelector = $("#pager");
     const pager = pagerSelector.pagination({
         cssStyle: 'light-theme',
@@ -52,11 +58,11 @@ $(function () {
         }
     });
 
-    
+    GetGenres();
     CreateQueryAndFetchData();
 
     function GetGenres() {
-        fetch(getAllGenres)
+        fetch(getAllGenresUrl)
             .then(response => response.json())
             .then(data => {
                 genres = data.items;
@@ -72,8 +78,8 @@ $(function () {
         params.append('page', pageNumber);
         if (titleSearchString) params.append('title', titleSearchString);        
         if (genreIdSearchString) params.append('genreid', genreIdSearchString);
-        const getAllMoviesWithOptions = getAllMovies + '?' + params.toString();
-        fetch(getAllMoviesWithOptions)
+        const getAllMoviesUrlWithOptions = getAllMoviesUrl + '?' + params.toString();
+        fetch(getAllMoviesUrlWithOptions)
             .then(response => response.json())
             .then(data => {
                 list.option('dataSource', data.items);
