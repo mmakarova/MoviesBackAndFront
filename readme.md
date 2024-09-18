@@ -211,6 +211,7 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
    a. **Получение списка жанров**
     Вызов GET /api/genres
     <details><summary>Пример ответа</summary>
+
         ```js
         {
             "items": [
@@ -237,6 +238,7 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
             ]
         }
         ```
+        
 
     </details>  
 
