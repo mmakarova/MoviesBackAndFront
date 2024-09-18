@@ -299,7 +299,7 @@ ALTER TABLE public.movies_genres ADD CONSTRAINT movies_genres_movies_fk FOREIGN 
 
 ## Примечание
 
-Любое Frontend решение может быть продемонстрирована с помощью платформы codepen. Например, показ фильмов без фильтрации реализован по ссылке: https://codepen.io/Marina-Makarova-the-builder/pen/zYVQRwW
+Любое Frontend решение может быть продемонстрирована с помощью платформы codepen. Например, показ фильмов c фильтрацией на клиенте реализован по ссылке: https://codepen.io/Marina-Makarova-the-builder/pen/zYVQRwW
 
 [Вернуться к содержанию](#thetableofcontents)
 
