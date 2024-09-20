@@ -40,7 +40,7 @@ $(function () {
     $('#searchButton').dxButton({
         text: 'Поиск',
         onClick() {
-            CreateQueryAndFetchData();
+            GetMoviesBasedOnQueryParams();
         }
     });
 
@@ -54,12 +54,13 @@ $(function () {
         prevText: 'Пред.',
         nextText: 'След.',
         onPageClick: function (pageNumber) {
-            CreateQueryAndFetchData(pageNumber);
+            GetMoviesBasedOnQueryParams(pageNumber);
         }
     });
 
+    //Запросы к backend для получения данных
     GetGenres();
-    CreateQueryAndFetchData();
+    GetMoviesBasedOnQueryParams();
 
     function GetGenres() {
         fetch(getAllGenresUrl)
@@ -70,14 +71,20 @@ $(function () {
             });
     }
     
-    function CreateQueryAndFetchData(pageNumber = 1) {
-        const params = new URLSearchParams();
+    function GetMoviesBasedOnQueryParams(pageNumber = 1) {
+        
+        //получение значений параметров
         const titleSearchString = filterTitle.option('value');
         const genreIdSearchString = filterGenre.option('value');
+
+        //формирование параметров запроса
+        const params = new URLSearchParams();
         params.append('pagesize', pageSize);
         params.append('page', pageNumber);
         if (titleSearchString) params.append('title', titleSearchString);        
         if (genreIdSearchString) params.append('genreid', genreIdSearchString);
+
+        //добавление параметров к url запрова
         const getAllMoviesUrlWithOptions = getAllMoviesUrl + '?' + params.toString();
         fetch(getAllMoviesUrlWithOptions)
             .then(response => response.json())
