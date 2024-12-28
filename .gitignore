@@ -6,3 +6,5 @@ Back/Movies.Application/obj
 Back/Movies.Contracts/bin
 Back/Movies.Contracts/obj
 Front/Source/.vscode
+Back/Movies.Api/Movies.Api/appsettings.json
+Back/Movies.Api/publish
